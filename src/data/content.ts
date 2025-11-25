@@ -28,10 +28,22 @@ export type FAQ = {
   answer: string;
 };
 
+import heroImage from "../assets/hero.jpeg";
+import heroImage2 from "../assets/IMG_2739.jpg";
+import heroImage3 from "../assets/IMG_3368.jpg";
+import portfolioImage1 from "../assets/p1.jpeg";
+import portfolioImage2 from "../assets/m4.jpeg";
+import portfolioImage3 from "../assets/p2.jpeg";
+import portfolioImage4 from "../assets/GXME9691.JPG";
+
 export const heroImages = [
-  "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80",
+  heroImage,
+  heroImage2,
+  heroImage3,
+  portfolioImage1,
+  portfolioImage2,
+  portfolioImage3,
+  portfolioImage4,
 ];
 
 export const services: Service[] = [
@@ -73,7 +85,7 @@ export const portfolioItems: PortfolioItem[] = [
     id: "p1",
     title: "Golden Hour Bridal",
     category: "Bridal",
-    image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80",
+    image: heroImages[0],
     description: "Soft matte skin with rose-gold halo eyes for Riya's Pune pheras.",
     products: "Charlotte Tilbury, Dior Backstage, Huda Beauty",
   },
@@ -81,7 +93,7 @@ export const portfolioItems: PortfolioItem[] = [
     id: "p2",
     title: "Reception Glam",
     category: "Party",
-    image: "https://images.unsplash.com/photo-1506863530036-1efeddceb993?auto=format&fit=crop&w=900&q=80",
+    image: heroImages[1],
     description: "Smokey mauve tones with glassy skin for an indoor reception.",
     products: "NARS, Too Faced, MAC Cosmetics",
   },
@@ -89,7 +101,7 @@ export const portfolioItems: PortfolioItem[] = [
     id: "p3",
     title: "Haldi Glow",
     category: "Haldi",
-    image: "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=900&q=80",
+    image: heroImages[2],
     description: "Minimal makeup focusing on skincare glow for sunlight rituals.",
     products: "Bobbi Brown, Benefit Cosmetics",
   },
@@ -97,7 +109,7 @@ export const portfolioItems: PortfolioItem[] = [
     id: "p4",
     title: "Editorial Moment",
     category: "Photoshoot",
-    image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80",
+    image: heroImages[3],
     description: "Bold liner with brushed-up brows for a designer campaign.",
     products: "Pat McGrath, Anastasia Beverly Hills",
   },
@@ -105,7 +117,7 @@ export const portfolioItems: PortfolioItem[] = [
     id: "p5",
     title: "Before & After – Classic",
     category: "BeforeAfter",
-    image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80",
+    image: heroImages[4],
     description: "Natural features enhanced to camera-ready glam.",
     products: "Smashbox, Fenty Beauty",
   },
@@ -113,9 +125,17 @@ export const portfolioItems: PortfolioItem[] = [
     id: "p6",
     title: "Party Muse",
     category: "Party",
-    image: "https://images.unsplash.com/photo-1508674861872-a51e06c50c7b?auto=format&fit=crop&w=900&q=80",
+    image: heroImages[5],
     description: "Berry lips paired with soft curls for a sundowner cocktail.",
     products: "Estee Lauder, Rare Beauty",
+  },
+  {
+    id: "p7",
+    title: "Signature Luxe",
+    category: "Bridal",
+    image: heroImages[6],
+    description: "High-glam look featuring Komal’s signature dewy base and sculpted hair.",
+    products: "Hourglass, Tatcha, Givenchy",
   },
 ];
 

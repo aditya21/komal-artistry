@@ -8,7 +8,6 @@ import WhyChooseSection from "../components/WhyChooseSection";
 import TestimonialsSection from "../components/TestimonialsSection";
 import QuickBookingStrip from "../components/QuickBookingStrip";
 import BeforeAfterSection from "../components/BeforeAfterSection";
-import InstagramFeed from "../components/InstagramFeed";
 import FAQSection from "../components/FAQSection";
 
 const experienceHighlights = [
@@ -45,7 +44,6 @@ const Home = () => (
 
     <Box sx={{ backgroundColor: "#FFF9F6", py: { xs: 6, md: 8 } }}>
       <Container maxWidth="xl">
-        <InstagramFeed />
         <FAQSection />
         <QuickBookingStrip />
       </Container>

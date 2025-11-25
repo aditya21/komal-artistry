@@ -113,21 +113,44 @@ const HeroSection = () => (
             borderRadius: 2,
             px: { xs: 2, md: 4 },
             py: { xs: 1.5, md: 2 },
-            mb: 4,
+            mb: 0,
             backgroundColor: "rgba(255, 255, 255, 0.9)",
           }}
         >
-          <Typography
-            variant="body1"
-            sx={{
-              fontWeight: 600,
-              color: "#6B2C91",
-              fontSize: { xs: "0.875rem", md: "1rem" },
-              letterSpacing: 1,
-            }}
+          <Stack
+            direction={{ xs: "column", md: "row" }}
+            spacing={{ xs: 0.5, md: 1.5 }}
+            alignItems="center"
+            divider={
+              <Typography
+                variant="body1"
+                sx={{
+                  fontWeight: 600,
+                  color: "#6B2C91",
+                  fontSize: { xs: "0.875rem", md: "1rem" },
+                  letterSpacing: 1,
+                  display: { xs: "none", md: "inline" },
+                }}
+              >
+                |
+              </Typography>
+            }
           >
-            MAKE-UP | HAIR STYLE | STYLING
-          </Typography>
+            {["MAKE-UP", "HAIR STYLE", "STYLING"].map((label) => (
+              <Typography
+                key={label}
+                variant="body1"
+                sx={{
+                  fontWeight: 600,
+                  color: "#6B2C91",
+                  fontSize: { xs: "0.9rem", md: "1rem" },
+                  letterSpacing: 1,
+                }}
+              >
+                {label}
+              </Typography>
+            ))}
+          </Stack>
         </Paper>
 
         {/* Action Buttons */}
