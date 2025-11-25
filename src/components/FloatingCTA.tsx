@@ -8,7 +8,7 @@ const FloatingCTA: React.FC = () => (
       color="secondary"
       sx={{ position: "fixed", bottom: 24, right: 24, zIndex: 2000, boxShadow: 6 }}
       component="a"
-      href="https://wa.me/919820012345"
+      href="https://wa.me/919860108248"
       target="_blank"
       rel="noreferrer"
     >

@@ -5,6 +5,7 @@ import {
   DialogContent,
   Typography,
 } from "@mui/material";
+import { type SxProps, type Theme } from "@mui/material/styles";
 import Grid from "@mui/material/GridLegacy";
 import React from "react";
 
@@ -37,15 +38,29 @@ const Portfolio: React.FC = () => {
     setSelectedImage(null);
   };
 
+  const cardStyles: SxProps<Theme> = {
+    position: "relative",
+    width: "100%",
+    borderRadius: 4,
+    overflow: "hidden",
+    cursor: "pointer",
+    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+    "&:hover": {
+      transform: "scale(1.02)",
+      boxShadow: "0 10px 40px rgba(0,0,0,0.2)",
+    },
+  };
+
+  const imageStyles: SxProps<Theme> = {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    display: "block",
+    backgroundColor: "transparent",
+  };
+
   return (
-    <Box 
-      sx={{ 
-        display: "flex", 
-        flexDirection: "column",
-        flex: 1,
-        minHeight: 0,
-      }}
-    >
+    <Box sx={{ display: "flex", flexDirection: "column", flex: 1 }}>
       <Container
         maxWidth="xl"
         sx={{
@@ -83,52 +98,40 @@ const Portfolio: React.FC = () => {
       <Box
         sx={{
           flex: 1,
+          width: "100%",
           display: "flex",
           flexDirection: "column",
-          width: "100%",
-          minHeight: 0,
-          maxHeight: { xs: "calc(100vh - 200px)", md: "calc(100vh - 240px)" },
-          overflow: "visible",
-          gap: { xs: 1.5, md: 2 },
+          gap: { xs: 2, md: 3 },
+          pb: { xs: 4, md: 6 },
         }}
       >
         {/* Top Two Large Images - Full Width */}
         <Box sx={{ width: "100%", flex: "0 0 auto" }}>
-          <Grid
-            container
-            spacing={{ xs: 1, md: 2 }}
-            sx={{
-              height: { xs: 260, md: 320 },
-            }}
-          >
+          <Grid container spacing={{ xs: 2, md: 3 }}>
             {topImages.map((image, index) => (
-              <Grid item xs={12} md={6} key={index} sx={{ height: "100%" }}>
+              <Grid
+                item
+                xs={12}
+                md={6}
+                key={index}
+              >
                 <Box
                   onClick={() => handleImageClick(image.src)}
                   sx={{
-                    position: "relative",
-                    width: "100%",
-                    height: "100%",
-                    borderRadius: 4,
-                    overflow: "hidden",
-                    cursor: "pointer",
-                    transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                    "&:hover": {
-                      transform: "scale(1.02)",
-                      boxShadow: "0 10px 40px rgba(0,0,0,0.2)",
-                    },
+                    ...cardStyles,
+                    height: { xs: "auto", md: 340 },
                   }}
                 >
                   <Box
                     component="img"
                     src={image.src}
                     alt={image.alt}
-                    sx={{
-                      width: "100%",
-                      height: "100%",
-                        objectFit: "cover",
-                        backgroundColor: "transparent",
-                    }}
+                    sx={[
+                      imageStyles,
+                      {
+                        height: { xs: "auto", md: "100%" },
+                      },
+                    ]}
                   />
                 </Box>
               </Grid>
@@ -145,41 +148,32 @@ const Portfolio: React.FC = () => {
             flex: "0 0 auto",
           }}
         >
-          <Grid
-            container
-            spacing={{ xs: 1, md: 1.5 }}
-            sx={{
-              height: { xs: 220, md: 250 },
-            }}
-          >
+          <Grid container spacing={{ xs: 2, md: 2.5 }}>
             {bottomImages.map((image, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index} sx={{ height: "100%" }}>
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={4}
+                key={index}
+              >
                 <Box
                   onClick={() => handleImageClick(image.src)}
                   sx={{
-                    position: "relative",
-                    width: "100%",
-                    height: "100%",
-                    borderRadius: 4,
-                    overflow: "hidden",
-                    cursor: "pointer",
-                    transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                    "&:hover": {
-                      transform: "scale(1.02)",
-                      boxShadow: "0 10px 40px rgba(0,0,0,0.2)",
-                    },
+                    ...cardStyles,
+                    height: { xs: "auto", md: 280 },
                   }}
                 >
                   <Box
                     component="img"
                     src={image.src}
                     alt={image.alt}
-                    sx={{
-                      width: "100%",
-                      height: "100%",
-                        objectFit: "cover",
-                        backgroundColor: "transparent",
-                    }}
+                    sx={[
+                      imageStyles,
+                      {
+                        height: { xs: "auto", md: "100%" },
+                      },
+                    ]}
                   />
                 </Box>
               </Grid>

@@ -165,8 +165,8 @@ export const faqs: FAQ[] = [
 ];
 
 export const quickLinks = {
-  phone: "+91 98200 12345",
-  whatsapp: "https://wa.me/919820012345",
-  instagram: "https://www.instagram.com/komalartistry",
+  phone: "+91 9860108248",
+  whatsapp: "https://wa.me/919860108248",
+  instagram: "https://www.instagram.com/komal_artistry__",
   locationLabel: "Studio: Kalyani Nagar, Pune",
 };

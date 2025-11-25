@@ -44,7 +44,14 @@ const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
               }}
             />
           </Box>
-          <Stack direction="row" spacing={1} alignItems="center">
+          <Stack
+            direction="row"
+            spacing={{ xs: 0, md: 1 }}
+            alignItems="center"
+            flexWrap={{ xs: "wrap", md: "nowrap" }}
+            justifyContent={{ xs: "center", md: "flex-end" }}
+            sx={{ rowGap: { xs: 0.5, md: 0 }, maxWidth: { xs: "100%", md: "none" } }}
+          >
             {navItems.map((item) => (
               <Button
                 key={item.path}
@@ -61,7 +68,7 @@ const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
             ))}
             <IconButton
               component="a"
-              href="https://www.instagram.com/komalartistry"
+              href="https://www.instagram.com/komal_artistry__"
               target="_blank"
               rel="noreferrer"
               sx={{ fontSize: { xs: "1.5rem", md: "1.75rem" } }}
@@ -80,10 +87,10 @@ const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
         <Container maxWidth="lg" sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 2 }}>
           <Typography variant="body2" sx={{ fontSize: { xs: "0.75rem", md: "0.875rem" } }}>© {new Date().getFullYear()} Komal Artistry. All rights reserved.</Typography>
           <Stack direction="row" spacing={1}>
-            <Button component="a" href="https://wa.me/919820012345" target="_blank" rel="noreferrer" variant="text" sx={{ fontSize: { xs: "0.75rem", md: "0.875rem" } }}>
+            <Button component="a" href="https://wa.me/919860108248" target="_blank" rel="noreferrer" variant="text" sx={{ fontSize: { xs: "0.75rem", md: "0.875rem" } }}>
               WhatsApp
             </Button>
-            <Button component="a" href="tel:+919820012345" variant="text" sx={{ fontSize: { xs: "0.75rem", md: "0.875rem" } }}>
+            <Button component="a" href="tel:+919860108248" variant="text" sx={{ fontSize: { xs: "0.75rem", md: "0.875rem" } }}>
               Call
             </Button>
             <Button component={RouterLink} to="/contact" variant="text" sx={{ fontSize: { xs: "0.75rem", md: "0.875rem" } }}>

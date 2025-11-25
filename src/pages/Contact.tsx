@@ -11,82 +11,116 @@ import {
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import RoomIcon from "@mui/icons-material/Room";
+import React from "react";
 import { quickLinks } from "../data/content";
 
 const EventTypes = ["Bridal", "Party", "Shoot", "Other"] as const;
 
-const Contact = () => (
-  <Box>
-    <Typography variant="overline" color="secondary.main">Contact & Booking</Typography>
-    <Typography variant="h3" sx={{ fontFamily: "Playfair Display, serif" }} gutterBottom>
-      Let's plan your glam timeline
-    </Typography>
-    <Grid container spacing={4}>
-      <Grid item xs={12} md={7}>
-        <Paper sx={{ p: 4, borderRadius: 4 }}>
-          <Stack spacing={2} component="form">
-            <TextField label="Full Name" fullWidth required />
-            <TextField label="Phone / WhatsApp" fullWidth required />
-            <TextField select label="Event Type" fullWidth defaultValue={EventTypes[0]}>
-              {EventTypes.map((type) => (
-                <MenuItem value={type} key={type}>
-                  {type}
-                </MenuItem>
-              ))}
-            </TextField>
-            <TextField label="Event Date" type="date" InputLabelProps={{ shrink: true }} fullWidth />
-            <TextField label="City / Venue" fullWidth />
-            <TextField label="Tell us about your look + outfit" multiline rows={4} fullWidth />
-            <Button variant="contained" color="primary" size="large">
-              Submit enquiry
-            </Button>
-          </Stack>
-        </Paper>
-      </Grid>
-      <Grid item xs={12} md={5}>
-        <Stack spacing={3}>
-          <Paper sx={{ p: 3, borderRadius: 4 }}>
-            <Typography variant="h6" sx={{ fontFamily: "Playfair Display, serif" }} gutterBottom>
-              Studio & Hotline
-            </Typography>
-            <Stack spacing={1}>
-              <Typography>{quickLinks.phone}</Typography>
-              <Typography color="text.secondary">{quickLinks.locationLabel}</Typography>
-            </Stack>
-            <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5} mt={3}>
-              <Button startIcon={<WhatsAppIcon />} href={quickLinks.whatsapp} target="_blank" rel="noreferrer" variant="contained">
-                WhatsApp
-              </Button>
-              <Button startIcon={<InstagramIcon />} href={quickLinks.instagram} target="_blank" rel="noreferrer" variant="outlined">
-                Instagram
+const WHATSAPP_NUMBER = "919860108248";
+
+const Contact: React.FC = () => {
+  const [formValues, setFormValues] = React.useState({
+    name: "",
+    phone: "",
+    eventType: EventTypes[0],
+    date: "",
+    city: "",
+    details: "",
+  });
+
+  const handleChange = (field: keyof typeof formValues) => (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFormValues((prev) => ({ ...prev, [field]: event.target.value }));
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const message = [
+      "Hi Komal Artistry, I'd like to enquire about your services.",
+      `Name: ${formValues.name || "-"}`,
+      `Phone: ${formValues.phone || "-"}`,
+      `Event Type: ${formValues.eventType}`,
+      `Date: ${formValues.date || "-"}`,
+      `City/Venue: ${formValues.city || "-"}`,
+      `Details: ${formValues.details || "-"}`,
+    ].join("\n");
+
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
+  };
+
+  return (
+    <Box>
+      <Typography variant="overline" color="secondary.main">Contact & Booking</Typography>
+      <Typography variant="h3" sx={{ fontFamily: "Playfair Display, serif" }} gutterBottom>
+        Let's plan your glam timeline
+      </Typography>
+      <Grid container spacing={4}>
+        <Grid item xs={12} md={7}>
+          <Paper sx={{ p: 4, borderRadius: 4 }}>
+            <Stack spacing={2} component="form" onSubmit={handleSubmit}>
+              <TextField label="Full Name" fullWidth required value={formValues.name} onChange={handleChange("name")} />
+              <TextField label="Phone / WhatsApp" fullWidth required value={formValues.phone} onChange={handleChange("phone")} />
+              <TextField select label="Event Type" fullWidth value={formValues.eventType} onChange={handleChange("eventType")}>
+                {EventTypes.map((type) => (
+                  <MenuItem value={type} key={type}>
+                    {type}
+                  </MenuItem>
+                ))}
+              </TextField>
+              <TextField label="Event Date" type="date" InputLabelProps={{ shrink: true }} fullWidth value={formValues.date} onChange={handleChange("date")} />
+              <TextField label="City / Venue" fullWidth value={formValues.city} onChange={handleChange("city")} />
+              <TextField label="Tell us about your look + outfit" multiline rows={4} fullWidth value={formValues.details} onChange={handleChange("details")} />
+              <Button variant="contained" color="primary" size="large" type="submit">
+                Submit enquiry via WhatsApp
               </Button>
             </Stack>
           </Paper>
-          <Paper sx={{ p: 1.5, borderRadius: 4, overflow: "hidden" }}>
-            <Box
-              component="iframe"
-              title="Studio location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.270353945813!2d73.90344957519341!3d18.561558568721054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c1320e7d0905%3A0x784b1c3c2de3c8a7!2sKalyani%20Nagar%2C%20Pune!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
-              width="100%"
-              height="320"
-              style={{ border: 0 }}
-              loading="lazy"
-              allowFullScreen
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </Paper>
-          <Paper sx={{ p: 3, borderRadius: 4 }}>
-            <Stack direction="row" spacing={2} alignItems="center">
-              <RoomIcon color="primary" />
-              <Typography variant="body2" color="text.secondary">
-                Appointments by prior booking only. Travel-friendly kit for destination weddings.
+        </Grid>
+        <Grid item xs={12} md={5}>
+          <Stack spacing={3}>
+            <Paper sx={{ p: 3, borderRadius: 4 }}>
+              <Typography variant="h6" sx={{ fontFamily: "Playfair Display, serif" }} gutterBottom>
+                Studio & Hotline
               </Typography>
-            </Stack>
-          </Paper>
-        </Stack>
+              <Stack spacing={1}>
+                <Typography>{quickLinks.phone}</Typography>
+                <Typography color="text.secondary">{quickLinks.locationLabel}</Typography>
+              </Stack>
+              <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5} mt={3}>
+                <Button startIcon={<WhatsAppIcon />} href={quickLinks.whatsapp} target="_blank" rel="noreferrer" variant="contained">
+                  WhatsApp
+                </Button>
+                <Button startIcon={<InstagramIcon />} href={quickLinks.instagram} target="_blank" rel="noreferrer" variant="outlined">
+                  Instagram
+                </Button>
+              </Stack>
+            </Paper>
+            <Paper sx={{ p: 1.5, borderRadius: 4, overflow: "hidden" }}>
+              <Box
+                component="iframe"
+                title="Studio location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.270353945813!2d73.90344957519341!3d18.561558568721054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c1320e7d0905%3A0x784b1c3c2de3c8a7!2sKalyani%20Nagar%2C%20Pune!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                width="100%"
+                height="320"
+                style={{ border: 0 }}
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </Paper>
+            <Paper sx={{ p: 3, borderRadius: 4 }}>
+              <Stack direction="row" spacing={2} alignItems="center">
+                <RoomIcon color="primary" />
+                <Typography variant="body2" color="text.secondary">
+                  Appointments by prior booking only. Travel-friendly kit for destination weddings.
+                </Typography>
+              </Stack>
+            </Paper>
+          </Stack>
+        </Grid>
       </Grid>
-    </Grid>
-  </Box>
-);
+    </Box>
+  );
+};
 
 export default Contact;
