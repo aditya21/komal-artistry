@@ -4,14 +4,14 @@
     "lib": ["DOM", "DOM.Iterable", "ES2020"],
     "module": "ESNext",
     "moduleResolution": "bundler",
+    "types": ["vite/client", "react", "react-dom"],
     "jsx": "react-jsx",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "./src",
-    "types": ["react", "react-dom"]
+    "baseUrl": "./src"
   },
   "include": ["src"],
   "exclude": ["dist", "node_modules"]

@@ -2,10 +2,13 @@
 node_modules
 .pnp.*
 
-# parcel / build output
-.parcel-cache
+# build output
 dist
-.npm-cache
+dist-ssr
+*.local
+
+# Vite
+.vite
 
 # env / credentials
 .env

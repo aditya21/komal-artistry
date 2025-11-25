@@ -1,98 +1,189 @@
-import { Box, Button, Container, Stack, Typography } from "@mui/material";
-import Grid from "@mui/material/GridLegacy";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import React from "react";
-import { heroImages } from "../data/content";
+import { Box, Container, Paper, Stack, Typography, Link, Button } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import PhoneIcon from "@mui/icons-material/Phone";
+import LanguageIcon from "@mui/icons-material/Language";
 
-const collageImages = [
-  heroImages[0],
-  "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80",
-  heroImages[1],
-  "https://images.unsplash.com/photo-1506863530036-1efeddceb993?auto=format&fit=crop&w=900&q=80",
-  heroImages[2],
-];
+// Vite handles image imports directly as URL strings
+import komalImage from "../assets/komal.png";
+import heroImage from "../assets/hero.jpeg";
 
-const HeroSection: React.FC = () => (
+const HeroSection = () => (
   <Box
     sx={{
+      position: "relative",
       width: "100%",
-      py: { xs: 6, md: 10 },
-      background: "radial-gradient(circle at top right, rgba(212,175,55,0.15), transparent 55%), #FFF7F3",
+      minHeight: { xs: "80vh", md: "90vh" },
+      borderRadius: { xs: 0, md: 5 },
+      overflow: "hidden",
+      backgroundImage: `url(${heroImage})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      py: { xs: 4, md: 6 },
+      "&::before": {
+        content: '""',
+        position: "absolute",
+        inset: 0,
+        background:
+          "linear-gradient(90deg, rgba(255, 182, 193, 0.5) 0%, rgba(221, 160, 221, 0.5) 50%, rgba(176, 224, 230, 0.5) 100%)",
+        zIndex: 0,
+      },
     }}
   >
-    <Container maxWidth="xl">
-      <Grid container spacing={{ xs: 4, md: 6 }} alignItems="stretch">
-        <Grid item xs={12} md={6} display="flex" alignItems="center">
-          <Box>
-            <Typography variant="h2" sx={{ fontFamily: "Playfair Display, serif", mb: 1 }}>
-              Luxury Bridal & Occasion Makeovers
-            </Typography>
-            <Typography variant="h5" color="text.secondary" sx={{ mb: 3 }}>
-              For your once-in-a-lifetime moments.
-            </Typography>
-            <Stack spacing={1.2} mb={4}>
-              <Typography variant="body1" color="text.secondary">
-                • Pune | Mumbai | Nagpur
-              </Typography>
-              <Typography variant="body1" color="text.secondary">
-                • Bridal, Engagement, Party & Photoshoot looks
-              </Typography>
-            </Stack>
-            <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
-              <Button
-                variant="contained"
-                color="primary"
-                size="large"
-                component={RouterLink}
-                to="/portfolio"
-                endIcon={<ArrowForwardIcon />}
-              >
-                View Portfolio
-              </Button>
-              <Button
-                variant="outlined"
-                color="secondary"
-                size="large"
-                component={RouterLink}
-                to="/contact"
-                endIcon={<ArrowForwardIcon />}
-              >
-                Book Appointment
-              </Button>
-            </Stack>
-          </Box>
-        </Grid>
-        <Grid item xs={12} md={6}>
+    <Container
+      maxWidth="xl"
+      sx={{
+        position: "relative",
+        zIndex: 1,
+        display: "flex",
+        flexDirection: { xs: "column", md: "row" },
+        alignItems: { xs: "center", md: "center" },
+        justifyContent: { xs: "center", md: "flex-start" },
+        gap: { xs: 4, md: 6 },
+        minHeight: { xs: "80vh", md: "90vh" },
+        py: { xs: 4, md: 6 },
+      }}
+    >
+      {/* Content with Portrait and Text */}
+      <Paper
+        elevation={0}
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" },
+          alignItems: "center",
+          gap: { xs: 4, md: 6 },
+          backgroundColor: "rgba(255, 255, 255, 0.5)",
+          backdropFilter: "blur(10px)",
+          borderRadius: 4,
+          p: { xs: 3, md: 5 },
+          border: "1px solid rgba(255, 255, 255, 0.3)",
+          width: "fit-content",
+          maxWidth: { xs: "100%", md: "90%" },
+          mx: { xs: "auto", md: 0 },
+          ml: { xs: "auto", md: 0 },
+        }}
+      >
+        {/* Circular Portrait on Left */}
+        <Box
+          sx={{
+            flexShrink: 0,
+            width: { xs: 200, md: 300 },
+            height: { xs: 200, md: 300 },
+            borderRadius: "50%",
+            overflow: "hidden",
+            border: "4px solid rgba(255, 255, 255, 0.9)",
+            boxShadow: "0 10px 40px rgba(0,0,0,0.2)",
+          }}
+        >
           <Box
+            component="img"
+            src={komalImage}
+            alt="Komal Artistry"
             sx={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-              gridAutoRows: { xs: "160px", md: "190px" },
-              gap: 2,
+              width: "100%",
               height: "100%",
+              objectFit: "cover",
+            }}
+          />
+        </Box>
+
+        {/* Content on Right */}
+        <Box sx={{ flex: 1, textAlign: { xs: "center", md: "left" } }}>
+          {/* Business Name */}
+        <Typography
+          variant="h2"
+          sx={{
+            fontFamily: "Playfair Display, serif",
+            fontWeight: 700,
+            color: "#6B2C91",
+            mb: 3,
+            fontSize: { xs: "2rem", md: "3.5rem" },
+          }}
+        >
+          KOMAL ARTISTRY
+        </Typography>
+
+        {/* Services Box */}
+        <Paper
+          elevation={0}
+          sx={{
+            display: "inline-block",
+            border: "2px solid rgba(107, 44, 145, 0.3)",
+            borderRadius: 2,
+            px: { xs: 2, md: 4 },
+            py: { xs: 1.5, md: 2 },
+            mb: 4,
+            backgroundColor: "rgba(255, 255, 255, 0.9)",
+          }}
+        >
+          <Typography
+            variant="body1"
+            sx={{
+              fontWeight: 600,
+              color: "#6B2C91",
+              fontSize: { xs: "0.875rem", md: "1rem" },
+              letterSpacing: 1,
             }}
           >
-            {collageImages.map((image, index) => (
-              <Box
-                component="img"
-                key={image}
-                src={image}
-                alt="Bridal look"
-                sx={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  borderRadius: 4,
-                  boxShadow: 3,
-                  gridColumn: index === 0 ? "span 2" : "auto",
-                  gridRow: index === 0 ? "span 2" : "auto",
-                }}
-              />
-            ))}
-          </Box>
-        </Grid>
-      </Grid>
+            MAKE-UP | HAIR STYLE | STYLING
+          </Typography>
+        </Paper>
+
+        {/* Action Buttons */}
+        <Stack
+          direction={{ xs: "column", sm: "row" }}
+          spacing={{ xs: 2, sm: 3 }}
+          justifyContent={{ xs: "center", md: "flex-start" }}
+          alignItems="center"
+          sx={{ mt: 4 }}
+        >
+          <Button
+            component={RouterLink}
+            to="/portfolio"
+            variant="contained"
+            size="large"
+            sx={{
+              backgroundColor: "#6B2C91",
+              color: "white",
+              px: { xs: 4, md: 5 },
+              py: { xs: 1.5, md: 2 },
+              borderRadius: 2,
+              fontWeight: 600,
+              fontSize: { xs: "0.875rem", md: "1rem" },
+              textTransform: "none",
+              "&:hover": {
+                backgroundColor: "#5a2477",
+              },
+            }}
+          >
+            View Portfolio
+          </Button>
+          <Button
+            component={RouterLink}
+            to="/contact"
+            variant="outlined"
+            size="large"
+            sx={{
+              borderColor: "#6B2C91",
+              color: "#6B2C91",
+              px: { xs: 4, md: 5 },
+              py: { xs: 1.5, md: 2 },
+              borderRadius: 2,
+              fontWeight: 600,
+              fontSize: { xs: "0.875rem", md: "1rem" },
+              textTransform: "none",
+              "&:hover": {
+                borderColor: "#5a2477",
+                backgroundColor: "rgba(107, 44, 145, 0.08)",
+              },
+            }}
+          >
+            Book Now
+          </Button>
+        </Stack>
+        </Box>
+      </Paper>
     </Container>
   </Box>
 );
